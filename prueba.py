@@ -20,6 +20,11 @@ from cryptography.hazmat.primitives.asymmetric import ec
 
 st.title('Proyecto Criptografía')
 
+st.subheader('Argote Dávalos Roberto Carlos')
+st.subheader('Pardo Reyna Anelissa Allizon')
+
+st.write('Selecciona un tipo de algoritmo:')
+
 if st.checkbox('Cifrar/Descifrar'):
 
     vector_test_cd = [
