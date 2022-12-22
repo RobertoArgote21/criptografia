@@ -13,14 +13,12 @@ from Crypto.Hash import SHA256
 import cryptography.exceptions
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import ec
 
 
 
 st.title('Proyecto Criptografía')
-st.subheader('Argote Dávalos Roberto Carlos')
-st.subheader('Pardo Reyna Anelissa Allizon')
-
-st.write('Selecciona un tipo de algoritmo:')
 
 if st.checkbox('Cifrar/Descifrar'):
 
@@ -320,7 +318,7 @@ elif st.checkbox('Signing/Verifying'):
     plaintext = b'Attack at dawn'
     options = st.multiselect(
         'Selecciona los algoritmos a comparar',
-        ['RSA-OAEP', 'RSA-PSS'])
+        ['RSA-OAEP', 'RSA-PSS','ECDA PF 521','ECDSA BF'])
     
     button = st.button('Aceptar')
 
@@ -406,6 +404,76 @@ elif st.checkbox('Signing/Verifying'):
                     tiempo=ft-stm
                     tiempo = (tiempo-0.01)
                     verDf['RSA-PSS'].append(tiempo)
+            if i == 'ECDA PF 521':
+                sinDf['ECDA PF 521'] = []
+                verDf['ECDA PF 521'] = []
+                for j in vector_test_sv:
+                    private_key = ec.generate_private_key(
+                        ec.SECP521R1()
+                    )
+
+                    #signature
+                    stm=time.time()
+                    signature = private_key.sign(
+                        bytes(j, 'utf-8'),
+                        ec.ECDSA(hashes.SHA256())
+                    )
+                    time.sleep(0.01)
+                    ft=time.time()
+                    tiempo=ft-stm
+                    tiempo = (tiempo-0.01)
+                    sinDf['ECDA PF 521'].append(tiempo)
+
+                    #verifying
+                    public_key = private_key.public_key()
+                    stm=time.time()
+                    try:
+                        public_key.verify(signature, bytes(j, 'utf-8'), ec.ECDSA(hashes.SHA256()))
+                        #print ("The signature is authentic.")
+                    except cryptography.exceptions.InvalidSignature:
+                        # Should not happen
+                        #print ("The signature is not authentic.")
+                        assert False
+                    time.sleep(0.01)
+                    ft=time.time()
+                    tiempo=ft-stm
+                    tiempo = (tiempo-0.01)
+                    verDf['ECDA PF 521'].append(tiempo)
+            if i == 'ECDSA BF':
+                sinDf['ECDSA BF'] = []
+                verDf['ECDSA BF'] = []
+                for j in vector_test_sv:
+                    private_key = ec.generate_private_key(
+                        ec.SECT571K1()
+                    )
+                    #signature
+                    stm=time.time()
+                    signature = private_key.sign(
+                        bytes(j, 'utf-8'),
+                        ec.ECDSA(hashes.SHA256())
+                    )
+                    time.sleep(0.01)
+                    ft=time.time()
+                    tiempo=ft-stm
+                    tiempo = (tiempo-0.01)
+                    sinDf['ECDSA BF'].append(tiempo)
+
+                    #Verifying
+                    stm=time.time()
+                    public_key = private_key.public_key()
+                    try:
+                        public_key.verify(signature, bytes(j, 'utf-8'), ec.ECDSA(hashes.SHA256()))
+                        #print ("The signature is authentic.")
+                    except cryptography.exceptions.InvalidSignature:
+                        # Should not happen
+                        #print ("The signature is not authentic.")
+                        assert False
+                    time.sleep(0.01)
+                    ft=time.time()
+                    tiempo=ft-stm
+                    tiempo = (tiempo-0.01)
+                    verDf['ECDSA BF'].append(tiempo)
+
 
         
         col1, col2 = st.columns(2)
@@ -448,5 +516,3 @@ elif st.checkbox('Signing/Verifying'):
             meanTimesver
 
             st.bar_chart(meanTimesver, x='Algoritmo')
-
-
