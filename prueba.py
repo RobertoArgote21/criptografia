@@ -17,7 +17,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa, padding
 
 
 st.title('Proyecto Criptografía')
-
+st.header('Argote Dávalos Roberto Carlos. Pardo Reyna Anelissa Allizon')
 if st.checkbox('Cifrar/Descifrar'):
 
     vector_test_cd = [
