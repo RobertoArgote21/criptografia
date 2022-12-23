@@ -15,17 +15,34 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
+from streamlit_option_menu import option_menu
+
+
+st.markdown(""" <style> .font {
+        font-size:18px ; font-family: 'Courier'; color: ##FFFFFF;} 
+        </style> """, unsafe_allow_html=True)
+st.title(':red[Proyecto Criptografía]')
+st.markdown('<p class="font">Argote Dávalos Roberto Carlos</p>', unsafe_allow_html=True)
+st.markdown('<p class="font">Pardo Reyna Anelissa Allizon</p>', unsafe_allow_html=True)
+
+with st.sidebar:
+    st.subheader('Universidad Nacional Autónoma de México\n Facultad de Ingeniería 2023-1')
+    choose = option_menu("Selecciona un Algoritmo", ["Cifrar/Descifrar", "Hashing", "Signing/Verifying"],
+                         icons=['key', 'hash', 'vector-pen'],
+                         menu_icon="bezier", default_index=0,
+                         styles={
+        "container": {"padding": "5!important", "background-color": "#000000"},
+        "menu-title": {"font-size": "15px", "text-align": "left"},
+        "icon": {"color": "#62B6B7", "font-size": "25px"}, 
+        "nav-link": {"font-size": "13px", "text-align": "left", "margin":"0px", "--hover-color": "#82AAE3"},
+        "nav-link-selected": {"background-color": "#0D4C92"},
+    }
+    )
+    st.sidebar.info("Contacto\n\nRoberto: davalosroberto21@gmail.com\nAnelissa: anelissareyna@gmail.com")
 
 
 
-st.title('Proyecto Criptografía')
-
-st.subheader('Argote Dávalos Roberto Carlos')
-st.subheader('Pardo Reyna Anelissa Allizon')
-
-st.write('Selecciona un tipo de algoritmo:')
-
-if st.checkbox('Cifrar/Descifrar'):
+if choose == "Cifrar/Descifrar":
 
     vector_test_cd = [
         'NcCmyD8VOvpgyVn2ViQy38O35knGdlKA',
@@ -190,7 +207,7 @@ if st.checkbox('Cifrar/Descifrar'):
 
             st.bar_chart(meanTimesdes, x='Algoritmo')
 
-elif st.checkbox('Hashing'):
+elif choose == "Hashing":
     vector_test_hash=[
         "508eef6956f3a1f414d5e1c72c27650c26183206509410afc80e3ca0d77d5e32",
         "c8488ba83963dc4daedeedfe6425dd33dcc653dc5e109160fa2b5cd6133b4fbb",
@@ -295,7 +312,7 @@ elif st.checkbox('Hashing'):
         st.bar_chart(meanTimes, x='Algoritmo')
 
 
-elif st.checkbox('Signing/Verifying'):
+elif choose =="Signing/Verifying":
 
     vector_test_sv = [
         'UgBJ0JrifqTi60iLyF8tpTEVlfWjIBtm',
