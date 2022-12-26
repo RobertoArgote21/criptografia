@@ -93,7 +93,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     cifDf['AES 256 ECB'].append(tiempo) 
                     
                     #descifrar
@@ -105,7 +105,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     desDf['AES 256 ECB'].append(tiempo)            
             if i == 'AES 256 CBC':
                 cifDf['AES 256 CBC'] = []
@@ -121,7 +121,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     cifDf['AES 256 CBC'].append(tiempo) 
                     
                     #descifrar
@@ -133,7 +133,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     desDf['AES 256 CBC'].append(tiempo)
             if i == 'ChaCha20':
                 cifDf['ChaCha20'] = []
@@ -151,7 +151,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     cifDf['ChaCha20'].append(tiempo) 
                     
                     #descifrar
@@ -165,7 +165,7 @@ if choose == "Cifrar/Descifrar":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     desDf['ChaCha20'].append(tiempo)
             
         col1, col2 = st.columns(2)
@@ -253,7 +253,7 @@ elif choose == "Hashing":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01) #* 1000
+                    tiempo = (tiempo-0.01) * 1000
                     hashDf['SHA2 384'].append(tiempo)                    
             if i == 'SHA2 512':
                 hashDf['SHA2 512'] = []
@@ -265,7 +265,7 @@ elif choose == "Hashing":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     hashDf['SHA2 512'].append(tiempo)
             if i == 'SHA3 384':
                 hashDf['SHA3 384'] = []
@@ -277,7 +277,7 @@ elif choose == "Hashing":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     hashDf['SHA3 384'].append(tiempo)
             if i == 'SHA3 512':
                 hashDf['SHA3 512'] = []
@@ -289,7 +289,7 @@ elif choose == "Hashing":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     hashDf['SHA3 512'].append(tiempo)
         
         hashDf = pd.DataFrame(hashDf)
@@ -369,7 +369,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     sinDf['RSA-OAEP'].append(tiempo)
 
                     #Verifying
@@ -385,7 +385,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     verDf['RSA-OAEP'].append(tiempo)
 
 
@@ -409,7 +409,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     sinDf['RSA-PSS'].append(tiempo)
 
                     #Verifying
@@ -424,7 +424,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     verDf['RSA-PSS'].append(tiempo)
             if i == 'ECDA PF 521':
                 sinDf['ECDA PF 521'] = []
@@ -443,7 +443,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     sinDf['ECDA PF 521'].append(tiempo)
 
                     #verifying
@@ -459,7 +459,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     verDf['ECDA PF 521'].append(tiempo)
             if i == 'ECDSA BF':
                 sinDf['ECDSA BF'] = []
@@ -477,7 +477,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     sinDf['ECDSA BF'].append(tiempo)
 
                     #Verifying
@@ -493,7 +493,7 @@ elif choose =="Signing/Verifying":
                     time.sleep(0.01)
                     ft=time.time()
                     tiempo=ft-stm
-                    tiempo = (tiempo-0.01)
+                    tiempo = (tiempo-0.01) * 1000
                     verDf['ECDSA BF'].append(tiempo)
 
 
