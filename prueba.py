@@ -238,7 +238,7 @@ elif choose == "Hashing":
     button = st.button('Aceptar')
 
     if (button):
-        st.write('Tabla comparativa de tiempos (en segundos) de ejecución:')
+        st.write('Tabla comparativa de tiempos (en milisegundos) de ejecución:')
 
         hashDf = {'Vector' : vector_test_hash}
 
