@@ -172,6 +172,7 @@ if choose == "Cifrar/Descifrar":
 
         with col1:
             st.subheader("Cifrado")
+            st.write('Tabla comparativa de tiempos (en milisegundos) de ejecución:')
             cifDf = pd.DataFrame(cifDf)
             cifDf
             st.write('Gráfica comparativa: ')
@@ -190,6 +191,7 @@ if choose == "Cifrar/Descifrar":
             st.bar_chart(meanTimescif, x='Algoritmo')
         with col2:
             st.subheader("Descifrado")
+            st.write('Tabla comparativa de tiempos (en milisegundos) de ejecución:')
             desDf = pd.DataFrame(desDf)
             desDf
             st.write('Gráfica comparativa: ')
@@ -502,7 +504,7 @@ elif choose =="Signing/Verifying":
 
         with(col1):
             st.subheader("Signing")
-
+            st.write('Tabla comparativa de tiempos (en milisegundos) de ejecución:')
             sinDf = pd.DataFrame(sinDf)
             sinDf
             st.write('Gráfica comparativa: ')
@@ -522,6 +524,7 @@ elif choose =="Signing/Verifying":
 
         with(col2):
             st.subheader("Verifyng")
+            st.write('Tabla comparativa de tiempos (en milisegundos) de ejecución:')
             verDf = pd.DataFrame(verDf)
             verDf
             st.write('Gráfica comparativa: ')
